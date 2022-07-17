@@ -40,7 +40,10 @@ public class TwoSum {
      * @return indices of the two numbers such that they add up to target, else return null
      */
     public static int[] twoSumBrutForce(int[] nums, int target) {
+        // Since the nested loop will start from (i+1)th index,
+        // the outer loop should end when index is nums.length - 1
         for (int i = 0; i < nums.length - 1; i++) {
+            // Form a pair with each index of i, starting with (i + 1)
             for (int j = i + 1; j < nums.length; j++) {
                 if (nums[i] + nums[j] == target) {
                     return new int[]{i, j};
@@ -61,10 +64,13 @@ public class TwoSum {
     public static int[] twoSumHashMap(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
+            // Get the complement, i.e. number to achieve the given target sum with current number nums[i].
             int complement = target - nums[i];
+            // Check if we have already saved the complement number in our map
             if (map.containsKey(complement)) {
                 return new int[]{map.get(complement), i};
             }
+            // Add current number and its index to the map
             map.put(nums[i], i);
         }
         return null;
@@ -79,15 +85,21 @@ public class TwoSum {
      * @return indices of the two numbers such that they add up to target, else return null
      */
     public static int[] twoSumTwoPointers(int[] nums, int target) {
+        // Set the start index and end index values of the sorted array
         int start = 0;
         int end = nums.length - 1;
+        // When start and end indices becomes equal, we know there is no pair found with target sum.
         while (start < end) {
-            if (nums[start] + nums[end] == target) {
+            int currentSum = nums[start] + nums[end];
+            // If currentSum is equal to target, i.e. if pair is found with target sum return it
+            if (currentSum == target) {
                 return new int[]{start, end};
             }
-            if (nums[start] + nums[end] < target) {
+            // If currentSum is less than target, then we need to move forward in the array to try bigger element,
+            // i.e. increment the start index else decrement the end index to try the smaller value in the sorted array.
+            if (currentSum < target) {
                 start++;
-            } else if (nums[start] + nums[end] > target) {
+            } else {
                 end--;
             }
         }
