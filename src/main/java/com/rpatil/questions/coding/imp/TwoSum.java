@@ -9,29 +9,6 @@ import java.util.Map;
  */
 public class TwoSum {
 
-    public static void main(String[] args) {
-        int[] nums = {2, 7, 11, 15};
-        int target = 9;
-        System.out.println(Arrays.toString(twoSumBrutForce(nums, target)));
-        System.out.println(Arrays.toString(twoSumHashMap(nums, target)));
-        System.out.println(Arrays.toString(twoSumTwoPointers(nums, target)));
-        System.out.println();
-
-        nums = new int[]{3, 2, 4};
-        target = 6;
-        System.out.println(Arrays.toString(twoSumBrutForce(nums, target)));
-        System.out.println(Arrays.toString(twoSumHashMap(nums, target)));
-        nums = new int[]{2, 3, 4}; // to make it sorted
-        System.out.println(Arrays.toString(twoSumTwoPointers(nums, target)));
-        System.out.println();
-
-        nums = new int[]{3, 3};
-        System.out.println(Arrays.toString(twoSumBrutForce(nums, target)));
-        System.out.println(Arrays.toString(twoSumHashMap(nums, target)));
-        System.out.println(Arrays.toString(twoSumTwoPointers(nums, target)));
-        System.out.println();
-    }
-
     /**
      * Brut-force solution: Time O(n^2) and Space O(1)
      *
@@ -90,14 +67,14 @@ public class TwoSum {
         int end = nums.length - 1;
         // When start and end indices becomes equal, we know there is no pair found with target sum.
         while (start < end) {
-            int currentSum = nums[start] + nums[end];
-            // If currentSum is equal to target, i.e. if pair is found with target sum return it
-            if (currentSum == target) {
+            int sum = nums[start] + nums[end];
+            // If sum is equal to target, i.e. if pair is found with target sum return it
+            if (sum == target) {
                 return new int[]{start, end};
             }
-            // If currentSum is less than target, then we need to move forward in the array to try bigger element,
+            // If sum is less than target, then we need to move forward in the array to try bigger element,
             // i.e. increment the start index else decrement the end index to try the smaller value in the sorted array.
-            if (currentSum < target) {
+            if (sum < target) {
                 start++;
             } else {
                 end--;
