@@ -34,18 +34,21 @@ public class TwoSumTest {
     @DataProvider(name = "twoSumData")
     public Object[][] getDataFromDataProvider() {
         return new Object[][]{
+                {new int[]{3, 5, -4, 8, 11, 1, -1, 6}, 10, new int[]{4, 6}},
                 {new int[]{2, 7, 11, 15, 6}, 9, new int[]{0, 1}},
                 {new int[]{3, 2, 4, 5}, 6, new int[]{1, 2}},
                 {new int[]{3, 3}, 6, new int[]{0, 1}},
                 {new int[]{3, 3}, 5, null},
                 {new int[]{3}, 0, null},
-                {new int[]{}, 0, null}
+                {new int[]{}, 0, null},
+
         };
     }
 
     @DataProvider(name = "twoSumDataSorted")
     public Object[][] getDataFromSortedDataProvider() {
         return new Object[][]{
+                {new int[]{-4, -1, 1, 3, 5, 6, 8, 11}, 10, new int[]{1, 7}},
                 {new int[]{2, 7, 11, 15, 16}, 9, new int[]{0, 1}},
                 {new int[]{2, 3, 4, 5}, 6, new int[]{0, 2}},
                 {new int[]{3, 3}, 6, new int[]{0, 1}},

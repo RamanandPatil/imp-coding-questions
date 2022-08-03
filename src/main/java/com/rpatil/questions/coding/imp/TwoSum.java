@@ -1,6 +1,5 @@
 package com.rpatil.questions.coding.imp;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
